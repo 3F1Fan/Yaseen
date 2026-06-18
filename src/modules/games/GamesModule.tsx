@@ -1,5 +1,6 @@
 import { Routes, Route, Link, useParams } from 'react-router-dom'
 import { games, getGame } from './registry'
+import PlayCount from './PlayCount'
 
 function GamesGrid() {
   return (
@@ -42,6 +43,7 @@ function GamePlayer() {
       <div className="game-bar">
         <Link to="/games" className="back">← Games</Link>
         <span className="game-title">{game.title}</span>
+        <PlayCount gameId={game.id} />
       </div>
       <div className="game-canvas">
         <GameComponent />
