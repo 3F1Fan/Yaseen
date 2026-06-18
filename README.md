@@ -51,19 +51,26 @@ Your app goes live at:
 
 ---
 
-## Auto-deploy on every push (optional CI)
+## Auto-deploy on every push (CI)
 
-`.github/workflows/deploy.yml` deploys automatically when you push to `main`.
-Add these repository secrets (GitHub → Settings → Secrets and variables →
-Actions):
+Set this up once with Firebase's official command, which creates a service
+account and stores its key as an encrypted GitHub secret for you:
 
-- `FIREBASE_PROJECT_ID` — your project ID
-- `FIREBASE_SERVICE_ACCOUNT` — the JSON from a Firebase service account
-  (Project Settings → Service accounts → *Generate new private key*). Paste the
-  whole JSON file contents as the secret value.
+```bash
+firebase init hosting:github
+```
 
-The easiest way to generate these is `firebase init hosting:github`, which
-wires the secret up for you.
+Answer the prompts:
+
+- **GitHub repository:** `3f1fan/yaseen`
+- **Run a build script before deploy?** Yes → `npm ci && npm run build`
+- **Set up automatic deployment on merge / push?** Yes
+- **Branch for the live channel:** `claude/firebase-app-setup-clsls5`
+  (the repo's current default branch)
+
+This generates `.github/workflows/firebase-hosting-merge.yml` (and a
+PR-preview workflow). Commit and push those files; from then on every push to
+the live branch builds and deploys automatically.
 
 ---
 
