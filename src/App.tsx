@@ -13,20 +13,23 @@ function NotFound() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      {modules.map((mod) => {
-        const ModuleComponent = mod.component
-        // Wildcard so each module can own its own nested routes.
-        return (
-          <Route
-            key={mod.id}
-            path={`/${mod.id}/*`}
-            element={<ModuleComponent />}
-          />
-        )
-      })}
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        {modules.map((mod) => {
+          const ModuleComponent = mod.component
+          // Wildcard so each module can own its own nested routes.
+          return (
+            <Route
+              key={mod.id}
+              path={`/${mod.id}/*`}
+              element={<ModuleComponent />}
+            />
+          )
+        })}
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <span className="version-badge">v{__APP_VERSION__}</span>
+    </>
   )
 }
