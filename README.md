@@ -1,76 +1,40 @@
 # Yaseen's App
 
-A modular web app container for kids' modules and games — built to host
+A modular web app for kids' learning modules and games — built to host
 Poki-style 3D web games (Three.js / WebGL, or embedded Unity/Godot WebGL
 exports).
 
 Built with **Vite + React + TypeScript**, deployed on **Firebase Hosting**.
 
----
-
-## Run it locally
-
-```bash
-npm install
-npm run dev        # http://localhost:5173
-npm run build      # production build into dist/
-npm run preview    # preview the production build
-```
+**Live app:** https://yaseen-portal.web.app
 
 ---
 
-## Go live on Firebase (get your URL)
+## How to change the app and deploy
 
-This sandbox can't create a Firebase project for you (that needs your Google
-account), so do this once from your machine:
+Everything lives on GitHub and deploys automatically — no local setup needed.
+Any change pushed to the repo builds and goes live within a minute or two.
+There are three ways to make a change:
 
-1. **Install the CLI and sign in**
-   ```bash
-   npm install -g firebase-tools
-   firebase login
-   ```
+1. **Ask the assistant** to build a feature or fix something — it commits and
+   pushes for you, which deploys automatically.
 
-2. **Create a project** (or use an existing one) at
-   <https://console.firebase.google.com> — note the **Project ID**.
+2. **Edit on GitHub directly** — open a file at
+   <https://github.com/3F1Fan/Yaseen>, click the pencil ✏️, and commit. The
+   deploy runs on commit.
 
-3. **Point this repo at it** — replace the placeholder in `.firebaserc`:
-   ```json
-   { "projects": { "default": "your-project-id" } }
-   ```
-   Or run `firebase use --add` and pick it.
+3. **Trigger a deploy manually** (no code change) — go to the
+   [Actions tab](https://github.com/3F1Fan/Yaseen/actions), pick
+   **"Deploy to Firebase Hosting on merge"**, and click **Run workflow**.
 
-4. **Build & deploy**
-   ```bash
-   npm run deploy
-   ```
+You can watch every deploy on the
+[Actions tab](https://github.com/3F1Fan/Yaseen/actions). When a run is green,
+the live site is updated.
 
-Your app goes live at:
-
-- `https://your-project-id.web.app`
-- `https://your-project-id.firebaseapp.com`
-
----
-
-## Auto-deploy on every push (CI)
-
-Set this up once with Firebase's official command, which creates a service
-account and stores its key as an encrypted GitHub secret for you:
-
-```bash
-firebase init hosting:github
-```
-
-Answer the prompts:
-
-- **GitHub repository:** `3f1fan/yaseen`
-- **Run a build script before deploy?** Yes → `npm ci && npm run build`
-- **Set up automatic deployment on merge / push?** Yes
-- **Branch for the live channel:** `claude/firebase-app-setup-clsls5`
-  (the repo's current default branch)
-
-This generates `.github/workflows/firebase-hosting-merge.yml` (and a
-PR-preview workflow). Commit and push those files; from then on every push to
-the live branch builds and deploys automatically.
+> Deploys are handled by `.github/workflows/firebase-hosting-merge.yml`, which
+> builds the app and publishes it to the `yaseen-portal` Firebase project.
+> Pull requests get their own temporary preview URLs via
+> `firebase-hosting-pull-request.yml`.
 
 ---
 
