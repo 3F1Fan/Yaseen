@@ -6,7 +6,7 @@ export default function Home() {
     <div className="page">
       <header className="home-header">
         <h1>Yaseen's App</h1>
-        <p className="subtitle">Choose something to explore.</p>
+        <p className="subtitle">You'll Never Walk Alone ⚽</p>
       </header>
 
       <div className="grid">

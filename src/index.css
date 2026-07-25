@@ -1,9 +1,11 @@
 :root {
-  --bg: #0b1020;
-  --bg-card: #161c33;
-  --text: #f2f4ff;
-  --text-dim: #9aa3c7;
-  --accent: #7c5cff;
+  /* Liverpool FC inspired theme: deep red, dark base, gold accent */
+  --bg: #12080a;
+  --bg-card: #24141a;
+  --text: #f6f0f1;
+  --text-dim: #c39aa1;
+  --accent: #e01b22; /* LFC red */
+  --gold: #f6eb61; /* LFC gold */
 
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
   color: var(--text);
@@ -23,7 +25,7 @@ body,
 }
 
 body {
-  background: radial-gradient(circle at 30% 0%, #1a2148 0%, var(--bg) 60%);
+  background: radial-gradient(circle at 30% 0%, #4a0f16 0%, var(--bg) 60%);
 }
 
 a {
@@ -45,6 +47,7 @@ a {
 h1 {
   font-size: clamp(2rem, 6vw, 3rem);
   margin: 0.25rem 0;
+  color: var(--gold);
 }
 
 .subtitle {
@@ -149,4 +152,137 @@ h1 {
   background: rgba(0, 0, 0, 0.35);
   pointer-events: none;
   user-select: none;
+}
+
+/* ---- Top 100 Players module ---- */
+.players-header {
+  margin-bottom: 1.5rem;
+}
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.25rem 0 1rem;
+}
+.progress-bar {
+  flex: 1;
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--accent), var(--gold));
+  transition: width 0.3s ease;
+}
+.progress-label {
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.filters button {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: transparent;
+  color: var(--text-dim);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.filters button:hover {
+  color: var(--text);
+}
+.filters button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.player-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.player-row {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 0.6rem 0.85rem;
+}
+.player-row.done {
+  opacity: 0.6;
+}
+.player-rank {
+  min-width: 2rem;
+  text-align: center;
+  font-weight: 800;
+  color: var(--gold);
+  font-variant-numeric: tabular-nums;
+}
+.player-info {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.player-name {
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.player-row.done .player-name {
+  text-decoration: line-through;
+}
+.player-country {
+  font-size: 0.78rem;
+  color: var(--text-dim);
+}
+.watch-btn {
+  background: var(--accent);
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.watch-btn:hover {
+  filter: brightness(1.1);
+}
+.watched-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  cursor: pointer;
+  user-select: none;
+}
+.watched-toggle input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--gold);
+  cursor: pointer;
+}
+.empty-note {
+  text-align: center;
+  color: var(--text-dim);
+  margin-top: 2rem;
 }

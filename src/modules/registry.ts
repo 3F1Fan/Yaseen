@@ -23,14 +23,23 @@ export interface AppModule {
 
 // Lazy-free, explicit registry. Import the module's entry component here.
 import GamesModule from './games/GamesModule'
+import PlayersModule from './players/PlayersModule'
 
 export const modules: AppModule[] = [
+  {
+    id: 'players',
+    title: 'Top 100 Players',
+    description: "Football's greatest ever — watch highlights and track your progress.",
+    icon: '⚽',
+    color: '#C8102E',
+    component: PlayersModule,
+  },
   {
     id: 'games',
     title: 'Games',
     description: 'Fun 3D and arcade games to play.',
     icon: '🎮',
-    color: '#7c5cff',
+    color: '#F6EB61',
     component: GamesModule,
   },
   // Add more modules here, e.g. Reading, Numbers, Drawing...
