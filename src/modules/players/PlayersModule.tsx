@@ -66,7 +66,9 @@ export default function PlayersModule() {
               <span className="player-rank">{p.rank}</span>
               <div className="player-info">
                 <span className="player-name">{p.name}</span>
-                <span className="player-country">{p.country}</span>
+                <span className="player-country">
+                  {p.country} · Peak {p.peak}
+                </span>
               </div>
               <a
                 className="watch-btn"
